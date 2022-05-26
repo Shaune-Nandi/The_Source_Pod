@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PodcastController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,25 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+route::get('/register', [UserController::class, 'show_register'])->name('register');
+route::post('/register', [UserController::class, 'authenticate_register'])->name('authenticate_register');
+
+route::get('/login', [UserController::class, 'show_login'])->name('login');
+route::post('/login', [UserController::class, 'authenticate_login'])->name('authenticate_login');
+
+route::get('/logout', [UserController::class, 'logout']);
+
+Route::get('/home', [UserController::class, 'show_home'])->name('home');
+
+Route::get('/subscriber/{user}/personal_information', [UserController::class, 'show_user_personal_information']);
+Route::post('/subscriber/{user}/personal_information', [UserController::class, 'save_user_personal_information']);
+
+Route::get('/subscriber/{user}/library', [UserController::class, 'show_user_library']);
+
+Route::get('/subscriber/{user}/membership', [UserController::class, 'show_user_membership']);
+
+Route::get('/dashboard', [UserController::class, 'show_admin_dashboard']);
+
+Route::get('/podcast/create', [PodcastController::class, 'create_podcast']);
+
