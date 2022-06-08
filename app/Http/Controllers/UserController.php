@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Podcast;
 use Illuminate\Support\Facades\DB;
 
 
@@ -85,7 +86,8 @@ class UserController extends Controller
     }
     
     public function show_admin_dashboard(){
-        return view('users.admins.dashboard');
+        $podcast = Podcast::orderBy('created_at', 'DESC')->get();
+        return view('users.admins.dashboard', compact('podcast'));
     }
 
 }

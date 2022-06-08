@@ -25,6 +25,10 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.css" rel="stylesheet"/>
 
+    <!-- FilePond -->
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+
+
 
     <!-- Styles -->
     <style>
@@ -51,10 +55,17 @@
             background-color: #343a40;
         }
 
+        #label{
+            color: white;
+        }
+
     </style>
 
 </head>
 <body>
+    <!-- FilePond -->
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+
     <nav class="navbar navbar-expand-md navbar-dark shadow-sm sticky-top">
         <div class="container-fluid px-5">
             <a class="navbar-brand" href="{{ url('/') }}">
@@ -114,4 +125,5 @@
 
 <!-- MDB -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.js"></script>
+
 </html>

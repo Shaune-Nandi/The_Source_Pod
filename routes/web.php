@@ -38,5 +38,12 @@ Route::get('/subscriber/{user}/membership', [UserController::class, 'show_user_m
 
 Route::get('/dashboard', [UserController::class, 'show_admin_dashboard']);
 
-Route::get('/podcast/create', [PodcastController::class, 'create_podcast']);
+
+Route::get('/podcast/dashboard', [PodcastController::class, 'show_podcast_dashboard'])->name('podcast_dashboard');
+
+Route::get('/podcast/create', [PodcastController::class, 'create_podcast'])->name('create_podcast');
+Route::get('/podcast/update', [PodcastController::class, 'show_update_podcast'])->name('update_podcast_view');
+Route::post('/podcast/create', [PodcastController::class, 'save_podcast'])->name('upload_podcast');
+
+//Route::post('upload', [PodcastController::class, 'temp_upload']);
 
