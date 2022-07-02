@@ -37,8 +37,8 @@ class PodcastController extends Controller
         $image_file_name = str_replace(' ', '_', $image_file->getClientOriginalName());
         $image_file_name = $time_id . '.' . $image_file_name; //Unique file name
 
-        $audio_path = $audio_file->storeAs('/podcasts/' . $time_id, $audio_file_name);
-        $image_path = $image_file->storeAs('/podcasts/' . $time_id, $image_file_name);
+        $audio_path = $audio_file->storeAs('/public/podcasts', $audio_file_name);
+        $image_path = $image_file->storeAs('/public/podcasts', $image_file_name);
 
         Podcast::create([
             'title' => $request->title,
@@ -46,18 +46,24 @@ class PodcastController extends Controller
             'description' => $request->description,
             'user_id' => auth()->user()->id,
             'podcast_audio_name' => $audio_file_name,
+            'podcast_image_name' => $image_file_name,
             'podcast_audio_storage_location' => $audio_path,
             'podcast_image_storage_location' => $image_path,
         ]);
 
-        return redirect('/dashboard')->with("Success", "Podcast uploaded successfully");
+        return redirect('/admin_dashboard')->with("Success", "Podcast uploaded successfully");
     }
 
 
     public function show_podcast_dashboard() {
-        $podcast = Podcast::all();
+        $podcast = Podcast::latest('created_at')->get();
         return view('podcast.podcast_dashboard', compact('podcast'));
     }
+
+    public function show_podcast_player(Podcast $podcast) {
+        return view('podcast.podcast_player', compact('podcast'));
+    }
+
     
 
     public function show_update_podcast() {

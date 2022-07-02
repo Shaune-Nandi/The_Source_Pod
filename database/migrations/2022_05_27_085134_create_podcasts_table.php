@@ -17,13 +17,14 @@ return new class extends Migration
             $table->id();
             $table->string('time_id');
             $table->string('title');
-            $table->string('description');
+            $table->longtext('description');
             $table->unsignedBigInteger('user_id')
                 ->foreign('user_id')
                 ->references('id')
                 ->on('podcasts')
                 ->onDelete('cascade');
             $table->string('podcast_audio_name');
+            $table->string('podcast_image_name');
             $table->string('podcast_audio_storage_location');
             $table->string('podcast_image_storage_location');
             $table->timestamps();

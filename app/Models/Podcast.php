@@ -15,6 +15,7 @@ class Podcast extends Model
         'description',
         'user_id',
         'podcast_audio_name',
+        'podcast_image_name',
         'podcast_audio_storage_location',
         'podcast_image_storage_location',
     ];

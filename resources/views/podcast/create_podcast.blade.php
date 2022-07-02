@@ -30,7 +30,10 @@
                                     <center><label for="podcast_audio" class="form-label" id="label">{{ __('Upload Podcast Here') }}</label></center>
                                     <input type="file" name="podcast_audio" class="form-control" id="podcast_audio" accept="audio/*"/>
                                 </div>
-                                <small class="ms-5">{{ __('*** mp3 format recommended ***') }}</small>
+
+                                <div>
+                                    <center><small class="text-danger">{{ __('*** mp3 only ***') }}</small></center>
+                                </div>
 
                                 <!-- Upload Images -->
                                 <div class="form-outline form-white mb-4 mt-4">
@@ -40,7 +43,7 @@
                             </div>
 
                             <!-- Submit button -->
-                            <center><button type="submit" class="btn btn-danger mb-4">{{ __('Upload') }}</button></center>
+                            <center><button type="submit" class="btn btn-success mb-4">{{ __('Upload') }}</button></center>
                         </div>
                     </form>
                 </div>

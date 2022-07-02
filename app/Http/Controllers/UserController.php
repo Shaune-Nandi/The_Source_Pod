@@ -24,9 +24,11 @@ class UserController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => 'required|email',
-            'password' => 'required|min:5|confirmed'
+            'password' => 'required|min:5|confirmed'            
         ]);
         $registerDetails['password'] = bcrypt($registerDetails['password']);
+        $registerDetails['role_id'] = 2;
+        
         $user = User::create($registerDetails);
         auth()->login($user);
         return redirect('/home')->with('success', 'Registration successfull');
@@ -45,7 +47,7 @@ class UserController extends Controller
             session()->regenerate();
             $role_id = auth()->user()->role_id;
             if($role_id == 1){
-                return redirect('/dashboard')->with('success', 'welcome back');
+                return redirect('/admin_dashboard')->with('success', 'welcome back');
             }
             return redirect('/home')->with('success', 'welcome back');
         }

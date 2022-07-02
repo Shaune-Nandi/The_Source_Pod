@@ -28,8 +28,6 @@
     <!-- FilePond -->
     <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
 
-
-
     <!-- Styles -->
     <style>
         body {
