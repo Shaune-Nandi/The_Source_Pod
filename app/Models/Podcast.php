@@ -11,6 +11,7 @@ class Podcast extends Model
 
     protected $fillable = [
         'time_id',
+        'podcast_category',
         'title',
         'description',
         'user_id',
@@ -20,8 +21,11 @@ class Podcast extends Model
         'podcast_image_storage_location',
     ];
 
-    public function user()
-    {
+    public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function podcastCategory() {
+        return $this->belongsTo(PodcastCategory::class, 'podcast_category');
     }
 }

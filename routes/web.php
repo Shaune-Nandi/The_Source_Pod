@@ -15,9 +15,9 @@ use App\Http\Controllers\PodcastController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+route::get('/', [PodcastController::class, 'welcome']);
 
 route::get('/register', [UserController::class, 'show_register'])->name('register');
 route::post('/register', [UserController::class, 'authenticate_register'])->name('authenticate_register');

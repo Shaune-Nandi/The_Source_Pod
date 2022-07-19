@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Podcast;
+use App\Models\PodcastCategory;
 use App\Models\User;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -13,8 +14,16 @@ use Illuminate\Support\Facades\Storage;
 
 class PodcastController extends Controller
 {
+    public function welcome(){
+        $podcast_highlights = Podcast::inRandomOrder()->limit(6)->get(); 
+        // $podcasts = Podcast::all();  
+
+        return view('welcome', compact('podcast_highlights'));
+    }
+    
     public function create_podcast() {
-        return view('podcast.create_podcast');
+        $podcast_categories = PodcastCategory::all();  
+        return view('podcast.create_podcast', compact('podcast_categories'));
     }
 
     public function save_podcast(Request $request, User $user) {
@@ -23,8 +32,8 @@ class PodcastController extends Controller
             'description' => ['required', 'string', 'max:1000'],
             'podcast_audio' => 'required',
             'podcast_image' => 'required',
+            'podcast_category' => 'required',
         ]);
-
 
         $audio_file = $request->file('podcast_audio');
         $image_file = $request->file('podcast_image');
@@ -43,6 +52,7 @@ class PodcastController extends Controller
         Podcast::create([
             'title' => $request->title,
             'time_id' => $time_id,
+            'podcast_category' => $request->podcast_category,
             'description' => $request->description,
             'user_id' => auth()->user()->id,
             'podcast_audio_name' => $audio_file_name,

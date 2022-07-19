@@ -16,7 +16,12 @@ return new class extends Migration
         Schema::create('podcasts', function (Blueprint $table) {
             $table->id();
             $table->string('time_id');
-            $table->string('title');
+            $table->unsignedBigInteger('podcast_category')
+            ->foreign('podcast_category')
+            ->references('id')
+            ->on('podcast_categories')
+            ->onDelete('cascade');
+            $table->string('title')->unique();
             $table->longtext('description');
             $table->unsignedBigInteger('user_id')
                 ->foreign('user_id')

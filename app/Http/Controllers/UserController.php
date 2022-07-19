@@ -49,7 +49,7 @@ class UserController extends Controller
             if($role_id == 1){
                 return redirect('/admin_dashboard')->with('success', 'welcome back');
             }
-            return redirect('/home')->with('success', 'welcome back');
+            return redirect('/')->with('success', 'welcome back');
         }
         else{
             return redirect('/login');

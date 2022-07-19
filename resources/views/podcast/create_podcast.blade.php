@@ -17,6 +17,17 @@
                                     <label class="form-label" for="title">{{ __('Title') }}</label>
                                 </div>
 
+                                <!-- Class -->
+                                <div class="form-outline form-white mb-4">
+                                    <label for="podcast_category">Select the category:</label>
+                                    <select name="podcast_category" id="podcast_category" class="form-select" aria-label="Default select example">
+                                        <option>Select class below</option>
+                                        @foreach ($podcast_categories as $pod_cat)
+                                        <option value="{{ $pod_cat->id }}">{{ $pod_cat->category_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
                                 <!-- Description -->
                                 <div class="form-outline form-white mb-4">
                                     <textarea name="description" class="form-control" id="description" rows="5" value="{{ old('title') }}" required></textarea>

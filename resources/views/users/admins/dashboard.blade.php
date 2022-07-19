@@ -34,8 +34,11 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ $podcast->title }}</h5>
-                                            <p class="card-text">{{ $podcast->description }}</p>
+                                            <h5 class="card-title">
+                                                {{ $podcast->title }} 
+                                                <!-- <span>$podcast->podcastCategory->category_name</span> -->
+                                            </h5>
+                                            <p class="card-text">{{ Str::words($podcast->description, 10, '...') }}</p>
                                             <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
                                         </div>
                                     </div>
