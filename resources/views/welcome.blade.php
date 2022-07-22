@@ -53,7 +53,7 @@
                     <img src="{{ asset('carousel/Pic_3.png') }}" class="d-block w-100" alt="Slide 3" id="img"/>
                     <div class="carousel-caption d-none d-md-block">
                         <!-- <h5>Third slide label</h5>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> -->
+                        <p>Praesent commodo cursus magna, vel scjjelerisque nisl consectetur.</p> -->
                     </div>
                 </div>
             </div>
@@ -129,15 +129,24 @@
         <br>
         <div class="row">
             <div class="d-flex justify-content-center">
-                <a href="#" class="badge badge-success rounded-pill d-inline me-2 py-2 px-3">SERMONS</a>
-                <a href="#" class="badge badge-primary rounded-pill d-inline me-2 py-2 px-3">FINANCES</a>
-                <a href="#" class="badge badge-info rounded-pill d-inline me-2 py-2 px-3">RELATIONSHIPS</a>
-                <a href="#" class="badge badge-secondary rounded-pill d-inline me-2 py-2 px-3">HACKS</a>
-                <a href="#" class="badge badge-danger rounded-pill d-inline me-2 py-2 px-3">YOUNG GENERALS</a>
-                <a href="#" class="badge badge-warning rounded-pill d-inline me-2 py-2 px-3">UNDER 40 MILLIONARES</a>
-                <a href="#" class="badge badge-info rounded-pill d-inline me-2 py-2 px-3">STORIES</a>
-                <a href="#" class="badge badge-primary rounded-pill d-inline me-2 py-2 px-3">INSPIRATIONAL QOUTES</a>
-                <a href="#" class="badge badge-warning rounded-pill d-inline me-2 py-2 px-3">MUSLIM TEACHINGS</a>                
+                <a href="/podcast/categories/1" class="badge badge-success rounded-pill d-inline me-2 py-2 px-3">SERMONS</a>
+                <a href="/podcast/categories/2" class="badge badge-primary rounded-pill d-inline me-2 py-2 px-3">FINANCES</a>
+                <a href="/podcast/categories/3" class="badge badge-info rounded-pill d-inline me-2 py-2 px-3">RELATIONSHIPS</a>
+                <a href="/podcast/categories/4" class="badge badge-secondary rounded-pill d-inline me-2 py-2 px-3">HACKS</a>
+                <a href="/podcast/categories/5" class="badge badge-danger rounded-pill d-inline me-2 py-2 px-3">YOUNG GENERALS</a>
+                <a href="/podcast/categories/6" class="badge badge-warning rounded-pill d-inline me-2 py-2 px-3">UNDER 40 MILLIONARES</a>
+                <a href="/podcast/categories/7" class="badge badge-info rounded-pill d-inline me-2 py-2 px-3">STORIES</a>
+                <a href="/podcast/categories/8" class="badge badge-primary rounded-pill d-inline me-2 py-2 px-3">INSPIRATIONAL QOUTES</a>
+                <a href="/podcast/categories/9" class="badge badge-warning rounded-pill d-inline me-2 py-2 px-3">MUSLIM TEACHINGS</a>                
+            </div>
+        </div>
+<br>
+
+        <div class="row">
+            <div class="d-flex justify-content-center">
+                @foreach ($podcast_categories as $podcast_categories)
+                <a href="/podcast/categories/{{ $podcast_categories->id }}" class="badge badge-danger rounded-pill d-inline me-2 py-2 px-3">{{ $podcast_categories->category_name }}</a> 
+                @endforeach
             </div>
         </div>
         <br><br>
@@ -145,20 +154,22 @@
         <div class="row row-cols-1 row-cols-md-2 g-4">
             @foreach ($podcast_highlights as $podcast_highlights)
             <div class="col">
-                <div class="card bg-dark border-start border-danger border-5 mb-3" >
-                    <div class="row g-0">
-                        <div class="col-md-4 d-flex align-items-center border-start border-danger border-5">
-                            <img src="{{ asset('pod_1.jpg') }}" class="img-fluid rounded-start" alt="Podcast_image" style="max-height: 180px;">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $podcast_highlights->title }}</h5>
-                                <p class="card-text">{{ $podcast_highlights->description }}</p>
-                                <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                <a href="/podcast/{{ $podcast_highlights->id }}/play" style="text-decoration: none; color: white;">
+                    <div class="card bg-dark border-start border-danger border-5 mb-3" >
+                        <div class="row g-0 border-bottom border-danger border-3">
+                            <div class="col-md-4 d-flex align-items-center">
+                                <img src="{{ asset('storage/podcasts/' . $podcast_highlights->time_id . '/' . $podcast_highlights->podcast_image_name) }}" class="img-fluid rounded-start" alt="Podcast_image" style="max-height: 180px;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $podcast_highlights->title }}</h5>
+                                    <p class="card-text">{{ Str::words($podcast_highlights->description, 10, '...') }}</p>
+                                    <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             @endforeach
 

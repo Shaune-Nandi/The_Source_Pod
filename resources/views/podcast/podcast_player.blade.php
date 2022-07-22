@@ -1,53 +1,37 @@
 @extends('layouts.app')
 
 @section('title')
-    {{ __('############') }}    
+    {{ __('Player') }}    
 @endsection
 
 @section('body_content')
 
 <div class="container">
     <div class="card mb-3" style="min-height: 40vh">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="{{ asset('storage/podcasts/'.$podcast->podcast_image_name) }}" alt="podcast_image" class="img-fluid rounded-start">
+        <div class="row g-0 pt-3">
+            <h4 class="card-title"><center><i class="fa fa-music me-2"></i>{{ $podcast->title }} <br><span id="span" hidden>{{ asset('storage/podcasts/'.$podcast->podcast_audio_name) }}</span></center></h4><hr>
+            <center>
+                <audio id="myAudio" controls autoplay controlsList="nodownload">
+                    <source src="{{ asset('storage/podcasts/'.$podcast->podcast_audio_name) }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p id="demo"></p>
+            </center>
+            <div class="col-md-5">
+                <h5><center>Episodes</center></h5>
+                @foreach ($podcast->podcastEpisodes as $podcast->podcastEpisodes)
+                    <div class="mx-3">{{ $podcast->podcastEpisodes->id }} - {{ $podcast->podcastEpisodes->title }}</div>
+                    <hr>
+                @endforeach
             </div>
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <div class="card-body">
-                    <h4 class="card-title"><center><i class="fa fa-music me-2"></i>{{ $podcast->title }} <br><span id="span" hidden>{{ asset('storage/podcasts/'.$podcast->podcast_audio_name) }}</span></center></h4>
+                    <center>
+                    <div style="max-width: 500px;"><img src="{{ asset('storage/podcasts/' . $podcast->time_id . '/' . $podcast->podcast_image_name) }}" alt="podcast_image" class="img-fluid rounded-start"></div>
+                    <br>
                     <p class="card-text">"{{ $podcast->description }}"</p>
-                    <div>
-                        <!-- <center>
-                            <div class="middle">
-                                <button onclick="previous_song()" id="pre"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
-                                <button onclick="play_audio()" id="play"><i class="fa fa-play" aria-hidden="true"></i></button>
-                                <button onclick="pause_audio()" id="pause"><i class="fa fa-pause" aria-hidden="true"></i></button>
-                                <button onclick="next_song()" id="next"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
-                            </div>
-
-
-                            <div class="volume">
-                                <p id="volume_show">80</p>
-                                <i class="fa fa-volume-up" aria-hidden="true" onclick="mute_sound()" id="volume_icon"></i>
-                                <input type="range" min="0" max="100" value="80" onchange="volume_change()" id="volume">  
-                            </div>
-
-                            <div class="duration">
-                                <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="change_duration()">
-                            </div>
-                        </center> -->
-                        <center>
-                            <audio id="myAudio" controls autoplay controlsList="nodownload">
-                                <source src="{{ asset('storage/podcasts/'.$podcast->podcast_audio_name) }}" type="audio/mpeg">
-                                Your browser does not support the audio element.
-                            </audio>
-                            <p id="demo"></p>
-                        </center>
-
-
-
-                    </div>
-                    <p class="card-text"><center><small class="text-muted">Uploaded on {{ $podcast->created_at->format('D, d/m/Y h:i:s A') }}</small></center></p>
+                    <!-- <p class="card-text"><small class="text-muted">Uploaded on {{ $podcast->created_at->format('D, d/m/Y h:i:s A') }}</small></p> -->
+                    </center>
                 </div>
             </div>
         </div>

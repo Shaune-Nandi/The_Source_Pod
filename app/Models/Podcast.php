@@ -15,9 +15,7 @@ class Podcast extends Model
         'title',
         'description',
         'user_id',
-        'podcast_audio_name',
         'podcast_image_name',
-        'podcast_audio_storage_location',
         'podcast_image_storage_location',
     ];
 
@@ -27,5 +25,9 @@ class Podcast extends Model
 
     public function podcastCategory() {
         return $this->belongsTo(PodcastCategory::class, 'podcast_category');
+    }
+
+    public function podcastEpisodes() {
+        return $this->hasMany(podcastEpisode::class, 'podcast_id');
     }
 }

@@ -30,7 +30,7 @@
                             <div class="card bg-dark border-start border-danger border-5 mb-3" style="max-width: 540px;">
                                 <div class="row g-0">
                                     <div class="col-md-4 d-flex align-items-center">
-                                        <img src="{{ asset('storage/podcasts/'.$podcast->podcast_image_name) }}" class="img-fluid rounded-start" alt="Podcast_image">
+                                        <img src="{{ asset('storage/podcasts/' . $podcast->time_id . '/' . $podcast->podcast_image_name) }}" class="img-fluid rounded-start" alt="Podcast_image">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">

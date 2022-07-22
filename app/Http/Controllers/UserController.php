@@ -15,10 +15,6 @@ class UserController extends Controller
         return view('users.authentication.register');
     }
 
-    public function show_home(){
-        return view('users.subscribers.home');
-    }
-
     public function authenticate_register(){
         $registerDetails = request()->validate([
             'first_name' => ['required', 'string', 'max:255'],

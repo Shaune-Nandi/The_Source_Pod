@@ -13,23 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('podcasts', function (Blueprint $table) {
+        Schema::create('podcast_episodes', function (Blueprint $table) {
             $table->id();
-            $table->string('time_id');
-            $table->unsignedBigInteger('podcast_category')
-            ->foreign('podcast_category')
-            ->references('id')
-            ->on('podcast_categories')
-            ->onDelete('cascade');
             $table->string('title')->unique();
             $table->longtext('description');
-            $table->unsignedBigInteger('user_id')
-                ->foreign('user_id')
+            $table->unsignedBigInteger('podcast_id')
+                ->foreign('podcast_id')
                 ->references('id')
                 ->on('podcasts')
                 ->onDelete('cascade');
-            $table->string('podcast_image_name');
-            $table->string('podcast_image_storage_location');
+            $table->string('episode_audio_name');
+            $table->string('episode_audio_storage_location');
             $table->timestamps();
         });
     }
@@ -41,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('podcast');
+        Schema::dropIfExists('podcast_episodes');
     }
 };

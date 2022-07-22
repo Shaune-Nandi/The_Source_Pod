@@ -16,7 +16,7 @@
 
     <div class="row justify-content-center mb-5 mt-5">
         <a href="{{ route('create_podcast') }}">
-            <center><button class="btn btn-success"><h5>Upload/Create Podcast</h5></button></center>           
+            <center><button class="btn btn-success"><h5>Create New Podcast</h5></button></center>           
         </a>
     </div>
 
@@ -37,7 +37,7 @@
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <img src="{{ asset('storage/podcasts/'.$podcast->podcast_image_name) }}" alt="podcast_image" style="width: 45px; height: 45px" class="rounded-circle"/>
+                            <img src="{{ asset('storage/podcasts/' . $podcast->time_id . '/' . $podcast->podcast_image_name) }}" alt="podcast_image" style="width: 45px; height: 45px" class="rounded-circle"/>
                             <div class="ms-3">
                                 <p class="fw-bold mb-1">{{ $podcast->title }}</p>
                                 <!-- <p class="text-muted mb-0">john.doe@gmail.com</p> -->
@@ -56,8 +56,8 @@
                         <span class="badge badge-success d-inline">Admin</span>
                     </td>
                     <td>
-                        <a href="/podcast/player/{{ $podcast->id }}"><button type="button" class="btn btn-primary btn-sm btn-rounded mb-2">Play</button></a>
-                        <a href=""><button type="button" class="btn btn-info btn-sm btn-rounded mb-2">Edit</button></a>
+                        <a href="/podcast/{{ $podcast->id }}/play"><button type="button" class="btn btn-primary btn-sm btn-rounded mb-2">Play</button></a>
+                        <a href="/podcast/{{ $podcast->id }}/edit"><button type="button" class="btn btn-info btn-sm btn-rounded mb-2">Edit</button></a>
                         <a href=""><button type="button" class="btn btn-danger btn-sm btn-rounded mb-2">Delete</button></a>
                     </td>
                 </tr>
@@ -65,6 +65,7 @@
             </tbody>
         </table>
     </div>
+    <br><br>
 </div>
 
 @endsection
