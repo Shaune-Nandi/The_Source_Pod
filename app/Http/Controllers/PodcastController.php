@@ -122,37 +122,35 @@ class PodcastController extends Controller
         return view('podcast.podcast_player', compact('podcast'));
     }
     
-                public function show_edit_podcast(Podcast $podcast) {
-                    $podcast_categories = PodcastCategory::all();  
-                    return view('podcast.edit_podcast', compact('podcast', 'podcast_categories'));
-                }
-                
+    public function show_edit_podcast(Podcast $podcast) {
+    $podcast_categories = PodcastCategory::all();  
+    return view('podcast.edit_podcast', compact('podcast', 'podcast_categories'));
+    }
+        
 
-
-
-
-
-                public function save_edit_podcast(Request $request, Podcast $podcast) {
-                    $time_id = $podcast->time_id;
-
-                    request()->validate([
-                        'title' => ['required', 'string', 'max:255'],
-                        'description' => ['required', 'string', 'max:1000'],
-                        'podcast_category' => 'required',
-                    ]);
-
-                    
+    public function save_edit_podcast(Request $request, Podcast $podcast) {
+        $time_id = $podcast->time_id;
+        request()->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:1000'],
+            'podcast_category' => 'required',
+        ]);
         $podcast->update([
             'title' => $request->title,
             'description' => $request->description,
             'podcast_category' => $request->podcast_category
         ]);
-
         $podcast->touch();
-            
-                    return redirect('/podcast/' . $podcast->id)->with("Success", "Episode updated successfully");
-                    
-                }
+        return redirect('/podcast/' . $podcast->id)->with("Success", "Episode updated successfully");            
+    }
+
+                
+    public function delete_podcast(Podcast $podcast) {
+        $podcast->delete();
+        $delete_audio = Storage::deleteDirectory('/public/podcasts/' . $podcast->time_id);
+
+        return redirect('/podcast/dashboard')->with("Success", "Episode deleted successfully");   
+    }
 
     public function show_update_podcast() {
         return view('podcast.update_podcast');

@@ -82,6 +82,8 @@
                     </li> -->
                 </ul>
 
+                <a href="/admin_dashboard">Go to admin</a>
+
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
