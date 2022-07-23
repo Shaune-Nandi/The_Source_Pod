@@ -149,7 +149,7 @@ class PodcastController extends Controller
         $podcast->delete();
         $delete_audio = Storage::deleteDirectory('/public/podcasts/' . $podcast->time_id);
 
-        return redirect('/podcast/dashboard')->with("Success", "Episode deleted successfully");   
+        return redirect('/podcast/dashboard')->with("Success", $podcast->title . " deleted successfully");   
     }
 
     public function show_update_podcast() {

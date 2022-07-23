@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('body_content')
+
+
+
+
 <style>
     #card_body {
         min-height: 40vh;
@@ -10,6 +14,8 @@
 
 <div class="container">
     <div class="row justify-content-center">
+
+
 
 
         <div class="col-md-12">
