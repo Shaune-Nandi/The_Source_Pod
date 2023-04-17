@@ -67,5 +67,7 @@ Route::get('/podcast/create/episode', [PodcastController::class, 'create_podcast
 Route::get('/podcast/{podcast}/play', [PodcastController::class, 'show_podcast_player']);
 Route::get('/podcast/{podcast}/edit', [PodcastController::class, 'show_edit_podcast']);
 Route::post('/podcast/{podcast}/edit', [PodcastController::class, 'save_edit_podcast']);
+Route::get('/podcast/{podcast}/delete', [PodcastController::class, 'delete_podcast']);
+
 
 });

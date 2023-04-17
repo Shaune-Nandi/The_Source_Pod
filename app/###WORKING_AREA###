@@ -102,3 +102,19 @@ User::inRandomOrder()->limit(5)->get();
                     </div>
                 </div>
             </div>
+
+
+
+INSERT INTO `podcasts` (`id`, `time_id`, `podcast_category`, `title`, `description`, `user_id`,`podcast_image_name`, `podcast_image_storage_location`, `created_at`, `updated_at`) VALUES (NULL, '1658387744', '6', 'Podcast_1', 'ppppppppppppppp', '2', 'jlkhhnkjjn', 'kjmnnnhjnnnj', '2022-07-22 10:42:45', '2022-07-12 10:42:45')
+
+
+20
+1658387744
+5
+dmncwojnfcoweof;jklm
+fiojiowfklmfpewkmfj3klkm
+1
+1658387719.Screenshot_(70).png
+public/podcasts/1658387719/1658387719.Screenshot_(...
+2022-07-21 07:15:19
+2022-07-21 07:15:19

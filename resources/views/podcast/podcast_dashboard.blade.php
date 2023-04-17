@@ -58,7 +58,7 @@
                     <td>
                         <a href="/podcast/{{ $podcast->id }}/play"><button type="button" class="btn btn-primary btn-sm btn-rounded mb-2">Play</button></a>
                         <a href="/podcast/{{ $podcast->id }}/edit"><button type="button" class="btn btn-info btn-sm btn-rounded mb-2">Edit</button></a>
-                        <a href=""><button type="button" class="btn btn-danger btn-sm btn-rounded mb-2">Delete</button></a>
+                        <a href="/podcast/{{ $podcast->id }}/delete"><button type="button" class="btn btn-danger btn-sm btn-rounded mb-2">Delete</button></a>
                     </td>
                 </tr>
                 @endforeach
