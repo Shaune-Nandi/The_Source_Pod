@@ -142,13 +142,15 @@
         </div>
 <br>
 
-        <div class="row">
+
+        <!-- <div class="row">
             <div class="d-flex justify-content-center">
                 @foreach ($podcast_categories as $podcast_categories)
                 <a href="/podcast/categories/{{ $podcast_categories->id }}" class="badge badge-danger rounded-pill d-inline me-2 py-2 px-3">{{ $podcast_categories->category_name }}</a> 
                 @endforeach
             </div>
-        </div>
+        </div> -->
+
         <br><br>
 
         <div class="row row-cols-1 row-cols-md-2 g-4">
